@@ -3,12 +3,23 @@ import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import friends from "./friends.json";
+// import PropTypes from "prop-types";
 
-class App extends Component {
-  // Setting this.state.friends to the friends json array
-  state = {
-    friends
-  };
+const startMessage = <h1>"react clicky game!"</h1>;
+const correctMessage = <h2>"you're on a roll"</h2>;
+const incorrectMessage = <h2>"game over"</h2>;
+
+class App extends React.Component {
+  constructor() {
+    super();
+    // Setting this.state.friends to the friends json array
+    this.state = {
+      friends: friends,
+      score: 0,
+      highScore: 0,
+      message: startMessage
+    };
+  }
 
   removeFriend = id => {
     // Filter this.state.friends for friends with an id not equal to the id being removed
@@ -17,11 +28,14 @@ class App extends Component {
     this.setState({ friends });
   };
 
+  clickCard = (event, id, state) => {
+    const selectedCards = this.state.friends.filter();
+  };
+
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
       <Wrapper>
-        {/* // create a nav element and insert here */}
         <Title>Friends List</Title>
         {this.state.friends.map(friend => (
           <FriendCard
@@ -38,5 +52,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  friend: React.PropTypes.object
+};
 
 export default App;

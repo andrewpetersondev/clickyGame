@@ -27,4 +27,8 @@ function FriendCard(props) {
   );
 }
 
+FriendCard.propTypes = {
+  friend: React.PropTypes.bool.isRequired
+};
+
 export default FriendCard;
