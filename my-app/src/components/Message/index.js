@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import FriendCard from "../FriendCard";
 import "./style.css";
 
-class MainGameContainer extends Component {
+class Message extends Component {
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="text-center">
-          <p>{this.state.message}</p>
+          {message}
         </div>
       </div>
     );
   }
 }
+
+export default 

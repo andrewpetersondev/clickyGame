@@ -1,34 +1,33 @@
 import React from "react";
 import "./style.css";
 
-function FriendCard(props) {
-  return (
-    <div className="card">
-      <div className="img-container">
-        <img alt={props.name} src={props.image} />
-      </div>
-      <div className="content">
-        <ul>
-          <li>
-            <strong>Name:</strong> {props.name}
-          </li>
-          <li>
-            <strong>Occupation:</strong> {props.occupation}
-          </li>
-          <li>
-            <strong>Location:</strong> {props.location}
-          </li>
-        </ul>
-      </div>
-      <span onClick={() => props.removeFriend(props.id)} className="remove">
-        𝘅
-      </span>
+const FriendCard = props => (
+  <div
+    key={props.id}
+    className="card"
+    onClick={() => props.handleClick(props.id, props.clicked)}
+  >
+    <div className="img-container">
+      <img alt={props.name} src={props.image} />
     </div>
-  );
-}
+    <div className="content">
+      <ul>
+        <li>
+          <strong>Name:</strong> {props.name}
+        </li>
+        <li>
+          <strong>Occupation:</strong> {props.occupation}
+        </li>
+        <li>
+          <strong>Location:</strong> {props.location}
+        </li>
+      </ul>
+    </div>
+  </div>
+);
 
-FriendCard.propTypes = {
-  friend: React.PropTypes.bool.isRequired
-};
+// FriendCard.propTypes = {
+//   friend: React.PropTypes.bool.isRequired
+// };
 
 export default FriendCard;

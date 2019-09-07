@@ -1,60 +1,50 @@
 import React, { Component } from "react";
-import FriendCard from "./components/FriendCard";
 import Wrapper from "./components/Wrapper";
-import Title from "./components/Title";
+import Header from "./components/Header";
+import MainGameContainer from "./components/MainGameContainer";
 import friends from "./friends.json";
 // import PropTypes from "prop-types";
 
-const startMessage = <h1>"react clicky game!"</h1>;
-const correctMessage = <h2>"you're on a roll"</h2>;
-const incorrectMessage = <h2>"game over"</h2>;
+const startMessage = <h2>"react clicky game!"</h2>;
+// const correctMessage = <h2>"you're on a roll"</h2>;
+// const incorrectMessage = <h2>"game over"</h2>;
 
-class App extends React.Component {
-  constructor() {
-    super();
-    // Setting this.state.friends to the friends json array
+class App extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      friends: friends,
+      friends,
       score: 0,
       highScore: 0,
       message: startMessage
     };
   }
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
+  // removeFriend = id => {
+  //   // Filter this.state.friends for friends with an id not equal to the id being removed
+  //   const friends = this.state.friends.filter(friend => friend.id !== id);
+  //   // Set this.state.friends equal to the new friends array
+  //   this.setState({ friends });
+  // };
 
-  clickCard = (event, id, state) => {
-    const selectedCards = this.state.friends.filter();
-  };
+  handleClick = (id, clicked) => {};
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  // clickCard = (event, id, state) => {
+  //   const selectedCards = this.state.friends.filter();
+  // };
+
   render() {
     return (
       <Wrapper>
-        <Title>Friends List</Title>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            removeFriend={this.removeFriend}
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
-            occupation={friend.occupation}
-            location={friend.location}
-          />
-        ))}
+        <Header />
+        <MainGameContainer />
       </Wrapper>
     );
   }
 }
 
-App.propTypes = {
-  friend: React.PropTypes.object
-};
+// App.propTypes = {
+//   friend: React.PropTypes.object
+// };
 
 export default App;
