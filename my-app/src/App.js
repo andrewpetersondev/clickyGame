@@ -3,31 +3,48 @@ import Wrapper from "./components/Wrapper";
 import Header from "./components/Header";
 import MainGameContainer from "./components/MainGameContainer";
 import friends from "./friends.json";
-// import PropTypes from "prop-types";
 
 const startMessage = <h2>"react clicky game!"</h2>;
-// const correctMessage = <h2>"you're on a roll"</h2>;
-// const incorrectMessage = <h2>"game over"</h2>;
+const correctMessage = <h2>"you're on a roll"</h2>;
+const incorrectMessage = <h2>"game over"</h2>;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      friends,
-      score: 0,
-      highScore: 0,
-      message: startMessage
-    };
-  }
+  state = {
+    friends,
+    score: 0,
+    highScore: 0,
+    message: startMessage
+  };
 
-  // removeFriend = id => {
-  //   // Filter this.state.friends for friends with an id not equal to the id being removed
-  //   const friends = this.state.friends.filter(friend => friend.id !== id);
-  //   // Set this.state.friends equal to the new friends array
-  //   this.setState({ friends });
-  // };
+  handleClick = id => {
+    // console.log("i am clicked", id);
+    let i = 0;
+    const newArray = this.state.friends.map(friend => {
+      if (id === friend.id) {
+        if (!friend.clicked) {
+          friend.clicked = true;
+          this.setState({
+            score: this.state.score + 1,
+            highScore: this.state.highScore + 1
+            // message: correctMessage
+          });
+        } else {
+          this.setState({
+            score: 0
+          });
+        }
+      }
+      return friend;
+    });
 
-  handleClick = (id, clicked) => {};
+    this.setState({ friends: newArray });
+    console.log(newArray);
+    this.state.friends.sort(() => Math.random() - 0.5);
+
+    this.setState({ friends });
+
+    // alert("hello");
+  };
 
   // clickCard = (event, id, state) => {
   //   const selectedCards = this.state.friends.filter();
@@ -36,15 +53,14 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
-        <Header />
-        <MainGameContainer />
+        <Header score={this.state.score} highScore={this.state.highScore} />
+        <MainGameContainer
+          friends={this.state.friends}
+          onClick={this.handleClick}
+        />
       </Wrapper>
     );
   }
 }
-
-// App.propTypes = {
-//   friend: React.PropTypes.object
-// };
 
 export default App;
