@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <Wrapper>
+        {/* // create a nav element and insert here */}
         <Title>Friends List</Title>
         {this.state.friends.map(friend => (
           <FriendCard
