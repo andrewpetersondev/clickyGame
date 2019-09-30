@@ -36,9 +36,8 @@ class App extends Component {
       }
       return friend;
     });
-
     this.setState({ friends: newArray });
-    console.log(newArray);
+    // console.log(newArray);
     this.state.friends.sort(() => Math.random() - 0.5);
 
     this.setState({ friends });
