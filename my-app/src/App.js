@@ -5,8 +5,8 @@ import MainGameContainer from "./components/MainGameContainer";
 import friends from "./friends.json";
 
 const startMessage = <h2>"react clicky game!"</h2>;
-const correctMessage = <h2>"you're on a roll"</h2>;
-const incorrectMessage = <h2>"game over"</h2>;
+// const correctMessage = <h2>"you're on a roll"</h2>;
+// const incorrectMessage = <h2>"game over"</h2>;
 
 class App extends Component {
   state = {
@@ -18,7 +18,7 @@ class App extends Component {
 
   handleClick = id => {
     // console.log("i am clicked", id);
-    let i = 0;
+    // let i = 0;
     const newArray = this.state.friends.map(friend => {
       if (id === friend.id) {
         if (!friend.clicked) {
